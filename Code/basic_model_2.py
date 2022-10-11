@@ -1,7 +1,7 @@
 from keras.models import Sequential, Model
 from keras.layers import Dense, Conv2D, MaxPool2D, Activation, BatchNormalization, Flatten, InputLayer
-from keras.utils import to_categorical
-from keras.optimizers import SGD
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.optimizers import SGD
 import os
 import cv2
 import numpy as np
@@ -74,9 +74,9 @@ def base_model():
 
 def load_data():
 
-    filenames = os.listdir('./datasets/cuhk01/')
+    filenames = os.listdir('/content/drive/MyDrive/CUHK01/campus/')
     filenames.sort()
-    x = np.array([cv2.imread(os.path.join(os.path.abspath('./datasets/cuhk01/'), filename)) for filename in filenames])
+    x = np.array([cv2.imread(os.path.join(os.path.abspath('/content/drive/MyDrive/CUHK01/campus/'), filename)) for filename in filenames])
     labels = np.array([int(filename[:4]) for filename in filenames])
     print(labels[:10])
     return x, to_categorical(labels),labels
@@ -93,7 +93,7 @@ def get_feature_vec(model, x, labels):
 
 def cos_sim(model, feature_vec, labels, filename):
     print("the image file name given is "+filename)
-    image = np.array(cv2.imread(os.path.join(os.path.abspath('./datasets/cuhk01/'), filename)))
+    image = np.array(cv2.imread(os.path.join(os.path.abspath('/content/drive/MyDrive/CUHK01/campus/'), filename)))
     input_feature_vec = np.array(model.predict(np.expand_dims(image, axis=0)),dtype='float64')
 
     sim_list = []
