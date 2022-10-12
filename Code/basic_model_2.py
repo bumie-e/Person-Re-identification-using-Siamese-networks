@@ -84,7 +84,7 @@ def load_data():
 
 def get_feature_vec(model, x, labels):
 
-    model.load_weights('./model.h5py.data-00000-of-00001') #model_akshay_before.hdf5')
+    model.load_weights('../input/model-hf5/model.h5py.data-00000-of-00001') #model_akshay_before.hdf5')
     new_model = Model(model.layers[0].input, model.layers[-2].output)
     feature_vec = new_model.predict(x)
     new_model.summary()
