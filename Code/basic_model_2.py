@@ -74,9 +74,9 @@ def base_model():
 
 def load_data():
 
-    filenames = os.listdir('/content/drive/MyDrive/CUHK01/campus/')
+    filenames = os.listdir('../input/cuhko1/campus/')
     filenames.sort()
-    x = np.array([cv2.imread(os.path.join(os.path.abspath('/content/drive/MyDrive/CUHK01/campus/'), filename)) for filename in filenames])
+    x = np.array([cv2.imread(os.path.join(os.path.abspath('../input/cuhko1/campus/'), filename)) for filename in filenames])
     labels = np.array([int(filename[:4]) for filename in filenames])
     print(labels[:10])
     return x, to_categorical(labels),labels
@@ -93,7 +93,7 @@ def get_feature_vec(model, x, labels):
 
 def cos_sim(model, feature_vec, labels, filename):
     print("the image file name given is "+filename)
-    image = np.array(cv2.imread(os.path.join(os.path.abspath('/content/drive/MyDrive/CUHK01/campus/'), filename)))
+    image = np.array(cv2.imread(os.path.join(os.path.abspath('../input/cuhko1/campus/'), filename)))
     input_feature_vec = np.array(model.predict(np.expand_dims(image, axis=0)),dtype='float64')
 
     sim_list = []

@@ -66,8 +66,8 @@ def create_input_pairs(X, labels):
 
 
 def load_data():
-    filenames = os.listdir('/content/drive/MyDrive/CUHK01/campus/')
-    x = np.array([cv2.imread(os.path.join(os.path.abspath('/content/drive/MyDrive/CUHK01/campus/'), filename)) for filename in filenames])
+    filenames = os.listdir('../input/cuhko1/campus/')
+    x = np.array([cv2.imread(os.path.join(os.path.abspath('../input/cuhko1/campus/'), filename)) for filename in filenames])
     labels = np.array([int(filename[:4]) for filename in filenames])
     idx = np.argsort(labels)
     x = x[idx]
